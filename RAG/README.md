@@ -31,9 +31,9 @@ Bei diesem Anwendungsfall ist das richtige Format für Dokument-Bibliothek entsc
 
 ### PDFs aufbereiten: Stirling PDF zum Umwandeln 
 
-![Screenshot Stirling PDF auf localhost:8083](./StirlingPDF/stirlingscreen.pdf)
+![Screenshot Stirling PDF auf localhost:8083](./StirlingPDF/stirlingscreen.png)
 
-[Stirling PDF]() ist ein Rundum-sorglos-Softwarepaket zum Zusammenlegen, Aufteilen, Begradigen, Bearbeiten und - vor allem - zum Auslesen und Umwandeln von PDF-Dateien. 
+[Stirling PDF](https://stirlingtools.com/) ist ein Rundum-sorglos-Softwarepaket zum Zusammenlegen, Aufteilen, Begradigen, Bearbeiten und - vor allem - zum Auslesen und Umwandeln von PDF-Dateien. 
 
 Es läuft am besten... in einem Docker-Container. (Siehe nächster Abschnitt)
 
