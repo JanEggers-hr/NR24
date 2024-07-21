@@ -1,6 +1,9 @@
 # RAGtime! Wie man KI-Assistenten und andere Ratgeber zum Tanzen bringt
 
-Session auf der Netzwerk-Recherche-Jahreskonferenz 2024 - alle Folien [als PDF hier.](https://github.com/JanEggers-hr/NR24/raw/main/RAG/NR24%20RAGtime.pdf)
+Session auf der Netzwerk-Recherche-Jahreskonferenz 2024 am 20.7.2024 in Hamburg
+
+- Alle Folien [als PDF hier.](https://github.com/JanEggers-hr/NR24/raw/main/RAG/NR24%20RAGtime.pdf)
+- [Mitschnitt bei Youtube](https://www.youtube.com/watch?v=pZuaRMWyfA8)
 
 ## Use Case 1: BBK-Ratgeber
 
@@ -19,14 +22,34 @@ Einschränkungen: Verweigere die Antwort, wenn das Thema der Anfrage nicht in de
 ```
 ## Use Case 2: ("fRAG den Staat")
 
-Bei diesem Anwendungsfall ist das richtige Format für Dokument-Bibliothek entscheidend: Die PDFs der ursprünglichen Protokolle kann die KI nicht richtig lesen. Ich habe dafür Python-Code benutzt, der auch im Repository liegt - vielleicht gibt es auch ein Online-Tool. 
-
-Der Python-Code findet sich in einem JuPyter-Notebook, das man beispielsweise auf [Colab](https://colab.google.com) hochladen und ausführen kann. 
-
 * [Blogpost](https://www.janeggers.tech/eeblog/2024/anwendungsfall-fuer-gpts-die-rki-protokolle-mit-ki-hilfe-durchsuchbar-machen/) erklärt den Weg zum Assistenten - und liefert aufbereitete Varianten der (geschwärzten) Protokolle
 * [Die RKI-Krisenstab-Protokolle ungeschwärzt als PDF vom RKI](https://www.rki.de/DE/Content/InfAZ/C/COVID-19-Pandemie/COVID-19-Krisenstabsprotokolle_Download.pdf?__blob=publicationFile)
 * Für ChatGPT-Plus-Kunden: [Der RKI-Protokolle-GPTs](https://chat.openai.com/g/g-oTgJQDcEG-rki-krisenstab-protokolle) (allerdings noch mit den geschwärzten Protokollen)
 * Der Code zum Umformatieren der PDFs in einem Notebook: https://github.com/JanEggers-hr/NR24/blob/main/RAG/NR24/pdf_skripte.ipynb
+
+Bei diesem Anwendungsfall ist das richtige Format für Dokument-Bibliothek entscheidend: Die PDFs der ursprünglichen Protokolle kann die KI nicht richtig lesen. Ich habe dafür Python-Code benutzt, der auch im Repository liegt - vielleicht gibt es auch ein Online-Tool. 
+
+### PDFs aufbereiten: Stirling PDF zum Umwandeln 
+
+![Screenshot Stirling PDF auf localhost:8083](./StirlingPDF/stirlingscreen.pdf)
+
+[Stirling PDF]() ist ein Rundum-sorglos-Softwarepaket zum Zusammenlegen, Aufteilen, Begradigen, Bearbeiten und - vor allem - zum Auslesen und Umwandeln von PDF-Dateien. 
+
+Es läuft am besten... in einem Docker-Container. (Siehe nächster Abschnitt)
+
+Wenn Docker (bzw. Docker Desktop) installiert ist, ist es ganz einfach, Stirling zu nutzen: 
+- In das Unterverzeichnis ```StirlingPDF``` wechseln
+- Eine Kommandozeile aufrufen (Mac: "Terminal" starten, Windows: "Eingabeaufforderung"/CMD)
+- Den Befehl ```docker-compose up``` eingeben und warten, bis alles gezogen ist
+- Browser öffnen und die Adresse ```localhost:8083``` ansteuern. 
+
+Meine Konfiguration startet Stirling PDF auf dem Port 8083, weil bei mir andere Ports schon belegt waren; das kann man gern vor dem Start des Containers in der Datei ```docker-compose.yml``` anpassen. In Docker Desktop bzw. Rancher Desktop lassen sich die Container dann auch gut stilllegen, wenn sie nicht benötigt werden, und wieder starten.
+
+Die Unterverzeichnisse in ```StirlingPDF``` benötigt Stirling PDF für Zusatzfunktionen, bitte in der Dokumentation des Programmpakets nachlesen (anders gesagt: ich weiß auch nicht, wofür, geht aber ohne). 
+
+### Wer's lieber selber baut...
+
+...der Python-Code, mit dem ich die Einzeldokumente umgewandelt und geputzt habe, findet sich in einem JuPyter-Notebook, das man beispielsweise auf [Colab](https://colab.google.com) hochladen und ausführen kann. 
 
 ## Use Case 3: Verurteilt-Podcast-Quizbot
 
